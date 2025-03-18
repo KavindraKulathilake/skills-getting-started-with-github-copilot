@@ -1,0 +1,28 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up environment variables
+        run: echo "STEP_4_FILE=.github/steps/4-copilot-on-github.md" >> $GITHUB_ENV
+
+      - name: Run script
+        run: |
+          # Your script here
+          echo "Running script..."
+          # Remove or handle exit 1
+          # exit 1
+          echo "Script completed successfully."
