@@ -88,11 +88,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  document.getElementById("dark-mode-toggle").addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    document.querySelector("header").classList.toggle("dark-mode");
-    document.querySelectorAll(".activity-card").forEach(card => card.classList.toggle("dark-mode"));
-  });
+  // Ensure dark mode toggle button is initialized correctly
+  const darkModeToggle = document.getElementById("dark-mode-toggle");
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      document.querySelector("header").classList.toggle("dark-mode");
+      document.querySelectorAll(".activity-card").forEach(card => card.classList.toggle("dark-mode"));
+    });
+  } else {
+    console.error("Dark mode toggle button not found");
+  }
 
   // Initialize app
   fetchActivities();
